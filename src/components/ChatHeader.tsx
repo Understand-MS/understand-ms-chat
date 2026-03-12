@@ -1,4 +1,4 @@
-import { Menu, Search, Settings } from "lucide-react";
+import { Menu } from "lucide-react";
 
 interface ChatHeaderProps {
   onMenuToggle: () => void;
@@ -16,14 +16,6 @@ const ChatHeader = ({ onMenuToggle }: ChatHeaderProps) => {
           <Menu className="w-5 h-5" />
         </button>
         <h1 className="text-lg font-bold text-foreground">Understand MS</h1>
-      </div>
-      <div className="flex items-center gap-1">
-        <button className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors" aria-label="Search">
-          <Search className="w-5 h-5" />
-        </button>
-        <button className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors" aria-label="Settings">
-          <Settings className="w-5 h-5" />
-        </button>
       </div>
     </header>
   );
