@@ -1,4 +1,4 @@
-import { MessageSquare, Clock, BookOpen, Info, User } from "lucide-react";
+import { MessageSquare, Clock, Info } from "lucide-react";
 import msRibbon from "@/assets/ms-ribbon.png";
 
 interface ChatSidebarProps {
