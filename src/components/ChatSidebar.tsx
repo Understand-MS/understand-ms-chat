@@ -41,18 +41,6 @@ const ChatSidebar = ({ activeTab, onTabChange }: ChatSidebarProps) => {
         ))}
       </nav>
 
-      {/* User profile */}
-      <div className="border-t border-border px-4 py-4">
-        <div className="flex items-center gap-3 px-2">
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-            <User className="w-5 h-5 text-primary-foreground" />
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-foreground">Guest User</p>
-            <p className="text-xs text-muted-foreground">Free Plan</p>
-          </div>
-        </div>
-      </div>
     </aside>
   );
 };
