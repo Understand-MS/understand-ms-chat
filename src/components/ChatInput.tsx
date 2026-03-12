@@ -44,12 +44,6 @@ const ChatInput = ({ onSend, disabled }: ChatInputProps) => {
             disabled={disabled}
             className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground resize-none outline-none text-base leading-relaxed"
           />
-          <button
-            className="p-2 text-muted-foreground hover:text-foreground transition-colors flex-shrink-0"
-            aria-label="Voice input"
-          >
-            <Mic className="w-5 h-5" />
-          </button>
         </div>
         <button
           onClick={handleSubmit}
