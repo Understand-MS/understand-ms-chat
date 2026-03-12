@@ -1,4 +1,4 @@
-import { Menu, Search, Settings } from "lucide-react";
+import { Menu } from "lucide-react";
 
 interface ChatHeaderProps {
   onMenuToggle: () => void;
