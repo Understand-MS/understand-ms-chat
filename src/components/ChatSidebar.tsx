@@ -9,7 +9,6 @@ interface ChatSidebarProps {
 const navItems = [
   { id: "chat", label: "Chat", icon: MessageSquare },
   { id: "previous", label: "Previous Questions", icon: Clock },
-  { id: "resources", label: "Resources", icon: BookOpen },
   { id: "about", label: "About MS", icon: Info },
 ];
 
