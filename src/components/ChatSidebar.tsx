@@ -1,9 +1,13 @@
 import { MessageSquare, Clock, Info } from "lucide-react";
 import msRibbon from "@/assets/ms-ribbon.png";
+import ConversationList from "@/components/ConversationList";
+import LoginPrompt from "@/components/LoginPrompt";
+import { useAuth } from "@/context/AuthContext";
 
 interface ChatSidebarProps {
   activeTab: string;
   onTabChange: (tab: string) => void;
+  onConversationSelect: (conversationId: string) => void;
 }
 
 const navItems = [
@@ -12,7 +16,9 @@ const navItems = [
   { id: "about", label: "About MS", icon: Info },
 ];
 
-const ChatSidebar = ({ activeTab, onTabChange }: ChatSidebarProps) => {
+const ChatSidebar = ({ activeTab, onTabChange, onConversationSelect }: ChatSidebarProps) => {
+  const { user } = useAuth();
+
   return (
     <aside className="flex flex-col h-full bg-card border-r border-border w-72">
       {/* Logo */}
@@ -24,7 +30,7 @@ const ChatSidebar = ({ activeTab, onTabChange }: ChatSidebarProps) => {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-3 py-4 space-y-1">
+      <nav className="px-3 py-4 space-y-1">
         {navItems.map((item) => (
           <button
             key={item.id}
@@ -41,6 +47,18 @@ const ChatSidebar = ({ activeTab, onTabChange }: ChatSidebarProps) => {
         ))}
       </nav>
 
+      {/* Previous Questions panel */}
+      {activeTab === "previous" && (
+        <div className="flex-1 overflow-y-auto border-t border-border">
+          {user ? (
+            <div className="px-3 py-3">
+              <ConversationList onSelect={onConversationSelect} />
+            </div>
+          ) : (
+            <LoginPrompt />
+          )}
+        </div>
+      )}
     </aside>
   );
 };
