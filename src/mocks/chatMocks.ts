@@ -17,9 +17,9 @@ export function mockSendMessage(payload: ChatRequest): Promise<ChatResponse> {
   const content = MOCK_RESPONSES[payload.question] ?? DEFAULT_RESPONSE;
   return Promise.resolve({
     conversationId: payload.conversationId,
-    message: {
+    answer: {
       id: crypto.randomUUID(),
-      role: "assistant",
+      role: "assistant" as const,
       content,
       timestamp: new Date(),
     },

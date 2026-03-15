@@ -1,4 +1,4 @@
-import { Message } from "@/components/ChatMessage";
+import { Message } from "@/models/Message";
 
 export interface ConversationDetail {
   id: string;
