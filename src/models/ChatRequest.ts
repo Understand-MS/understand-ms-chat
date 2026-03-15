@@ -1,7 +1,7 @@
-import { Message } from "@/components/ChatMessage";
+import { Message } from "@/models/Message";
 
 export interface ChatRequest {
   conversationId: string;
-  message: string;
+  question: string;
   history: Pick<Message, "role" | "content">[];
 }

@@ -14,7 +14,7 @@ const DEFAULT_RESPONSE =
   "Thank you for your question about Multiple Sclerosis. This is running in mock mode — in production your question will be sent to the AI backend for a detailed, medically-informed response. Please consult a healthcare professional for personalised medical advice.";
 
 export function mockSendMessage(payload: ChatRequest): Promise<ChatResponse> {
-  const content = MOCK_RESPONSES[payload.message] ?? DEFAULT_RESPONSE;
+  const content = MOCK_RESPONSES[payload.question] ?? DEFAULT_RESPONSE;
   return Promise.resolve({
     conversationId: payload.conversationId,
     message: {

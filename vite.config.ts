@@ -11,6 +11,16 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       overlay: false,
     },
+    proxy: {
+      "/chat/": {
+        target: "http://localhost:8000",
+        changeOrigin: true,
+      },
+      "/history/": {
+        target: "http://localhost:8000",
+        changeOrigin: true,
+      },
+    },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {

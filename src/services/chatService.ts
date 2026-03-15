@@ -7,7 +7,7 @@ import { mockSendMessage } from "@/mocks/chatMocks";
 export async function sendMessage(payload: ChatRequest): Promise<ChatResponse> {
   if (appConfig.mockEnabled) return mockSendMessage(payload);
 
-  const response = await fetch(`${appConfig.apiEndpoint}/chat`, {
+  const response = await fetch(`${appConfig.apiEndpoint}/chat/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -23,7 +23,7 @@ export async function sendMessage(payload: ChatRequest): Promise<ChatResponse> {
 export async function sendFeedback(payload: FeedbackRequest): Promise<void> {
   if (appConfig.mockEnabled) return;
 
-  const response = await fetch(`${appConfig.apiEndpoint}/chat/feedback`, {
+  const response = await fetch(`${appConfig.apiEndpoint}/chat/feedback/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),

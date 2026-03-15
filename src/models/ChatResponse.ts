@@ -1,6 +1,6 @@
-import { Message } from "@/components/ChatMessage";
+import { Message } from "@/models/Message";
 
 export interface ChatResponse {
   conversationId: string;
-  message: Message;
+  answer: Message;
 }

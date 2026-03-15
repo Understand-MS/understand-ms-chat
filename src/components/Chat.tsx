@@ -35,11 +35,18 @@ const Chat = () => {
     try {
       const data = await sendMessage({
         conversationId,
-        message: text,
+        question: text,
         history: messages.map(({ role, content }) => ({ role, content })),
       });
-      setMessages((prev) => [...prev, data.message]);
-    } catch {
+
+      if (!data?.answer) {
+        console.error("Unexpected API response shape:", data);
+        throw new Error("Invalid response from server");
+      }
+
+      setMessages((prev) => [...prev, data.answer]);
+    } catch (err) {
+      console.error("sendMessage error:", err);
       const errorMsg: Message = {
         id: crypto.randomUUID(),
         role: "assistant",

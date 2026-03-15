@@ -1,13 +1,7 @@
 import { useState } from "react";
 import { ThumbsUp, ThumbsDown } from "lucide-react";
 import { motion } from "framer-motion";
-
-export interface Message {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
-  timestamp: Date;
-}
+import { Message } from "@/models/Message";
 
 interface ChatMessageProps {
   message: Message;
@@ -34,7 +28,7 @@ const ChatMessage = ({ message }: ChatMessageProps) => {
         <p className="text-base leading-relaxed whitespace-pre-wrap">{message.content}</p>
         <div className="flex items-center justify-between mt-2">
           <span className="text-xs text-muted-foreground">
-            {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+            {new Date(message.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
           </span>
           {isAssistant && (
             <div className="flex items-center gap-2 ml-4">
