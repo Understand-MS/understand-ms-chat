@@ -1,14 +1,13 @@
-name: Build & Deploy
+name: build-deploy
 
 on:
-  # push:
-  #   branches:
-  #     - main
-  # pull_request:
-  #   types: [opened, synchronize, reopened, closed]
-  #   branches:
-  #     - main
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
 
 jobs:
   build_and_deploy_job:
@@ -23,7 +22,7 @@ jobs:
         with:
           submodules: true
           lfs: false
-          
+
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
 
