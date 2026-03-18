@@ -3,3 +3,10 @@ data "azurerm_resource_group" "main" {
 }
 
 data "azurerm_client_config" "current" {}
+
+resource "azurerm_static_web_app" "main" {
+    name = var.app_name
+    resource_group_name = data.azurerm_resource_group.main.name
+    location = data.azurerm_resource_group.main.location
+    sku_tier = "Free"
+}
