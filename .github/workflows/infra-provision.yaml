@@ -1,10 +1,10 @@
 name: provision-infrastructure
 
 on:
-  # push:
-  #   paths:
-  #     - "terraform/**"
-  #     - ".github/workflows/infra-provision.yaml"
+  push:
+    paths:
+      - "terraform/**"
+      - ".github/workflows/infra-provision.yaml"
   workflow_dispatch:
 
 permissions:
@@ -31,23 +31,14 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Bootstrap Terraform Backend
-        shell: pwsh
-        run: ./terraform/scripts/bootstrap.ps1
-
       - name: Terraform Init
         working-directory: terraform
         run: terraform init
-
-      - name: Set Container Image
-        run: echo "TF_VAR_container_image=ghcr.io/${GITHUB_REPOSITORY,,}:latest" >> $GITHUB_ENV
 
       - name: Terraform Apply (Dev)
         working-directory: terraform
         run: terraform apply -auto-approve
         env:
           TF_VAR_location: northeurope
-          TF_VAR_container_app_environment_name: dev-env
-          TF_VAR_app_name: understand-ms
-          TF_VAR_github_username: ${{ secrets.GHCR_USERNAME }}
-          TF_VAR_github_pat: ${{ secrets.GHCR_PAT }}
+          TF_VAR_resource_group_name: understand-ms-rg
+          TF_VAR_app_name: understand-ms-ui
