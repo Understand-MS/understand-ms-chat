@@ -39,6 +39,6 @@ jobs:
         working-directory: terraform
         run: terraform apply -auto-approve
         env:
-          TF_VAR_location: northeurope
+          TF_VAR_static_web_location: westeurope
           TF_VAR_resource_group_name: understand-ms-rg
           TF_VAR_app_name: understand-ms-ui
